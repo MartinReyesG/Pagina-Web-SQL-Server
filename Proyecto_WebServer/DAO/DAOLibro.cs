@@ -10,10 +10,15 @@ namespace Proyecto_WebServer.DAO
 {
     public class DAOLibro
     {
+        string parametrosConexion =
+                   "server=127.0.0.1;uid=root;pwd=martin12345;database=Libreria";
+        //         "server=127.0.0.1;uid=root;pwd=root;database=Libreria";
         public List<Libro> lstLibros()
         {
+           
+
             MySqlConnection conexion = new MySqlConnection();
-            conexion.ConnectionString = "server=127.0.0.1;uid=root;pwd=root;database=Libreria";
+            conexion.ConnectionString = parametrosConexion;
 
             try
             {
@@ -65,7 +70,7 @@ namespace Proyecto_WebServer.DAO
         public bool Insertar(Libro obj)
         {
             MySqlConnection conexion = new MySqlConnection();
-            conexion.ConnectionString = "server=127.0.0.1;uid=root;pwd=root;database=Libreria";
+            conexion.ConnectionString = parametrosConexion;
             conexion.Open();
 
             string consulta = @"INSERT INTO libros

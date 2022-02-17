@@ -16,6 +16,7 @@
     <form id="FPrincipal" runat="server">
         <div>
             <div class="auto_style1">
+                0
                 LIBRERIA 
             </div>
             <br />

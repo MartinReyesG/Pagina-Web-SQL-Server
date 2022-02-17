@@ -72,6 +72,8 @@
             <hr />
             <div class="row">
                 <asp:Button ID="btnAnadir" CssClass="btn btn-primary btn-dark" runat="server" Text="AÑADIR" OnClick="btnAnadir_Click"/>
+            &nbsp;&nbsp;
+                <asp:Button ID="btnRegresar" CssClass="btn btn-primary btn-dark" runat="server" Text="REGRESAR" OnClick="btnRegresar_Click"/>
             </div>
         </div>
     </form>

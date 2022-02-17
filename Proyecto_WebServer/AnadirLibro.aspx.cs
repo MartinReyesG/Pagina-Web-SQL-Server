@@ -44,5 +44,10 @@ namespace Proyecto_WebServer
 
             objLibro.Insertar(obj);
         }
+
+        protected void btnRegresar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Principal.aspx");
+        }
     }
 }
