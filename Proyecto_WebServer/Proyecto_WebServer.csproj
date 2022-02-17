@@ -108,10 +108,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AnadirLibro.aspx" />
+    <Content Include="CSS\StyleSheet1.css" />
     <Content Include="Principal.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnadirLibro.aspx.cs">
+      <DependentUpon>AnadirLibro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AnadirLibro.aspx.designer.cs">
+      <DependentUpon>AnadirLibro.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DAO\DAOLibro.cs" />
     <Compile Include="MODELO\Libro.cs" />
     <Compile Include="Principal.aspx.cs">

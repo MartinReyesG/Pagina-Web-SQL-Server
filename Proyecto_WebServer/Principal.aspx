@@ -22,8 +22,12 @@
             <div>
                 <asp:GridView ID="dgvLibros" runat="server"></asp:GridView>
             </div>
+            <br />
             <div class="auto_style1">
-                <asp:Button ID="Button1" runat="server" Text="Button" />
+                <asp:Button ID="btnVer" runat="server" Text="Ver Libros" OnClick="btnVer_Click"/>
+                <asp:Button ID="btnAnadir" runat="server" Text="Añadir Libro" OnClick="btnAnadir_Click"/>
+                <asp:Button ID="btnModificar" runat="server" Text="Modificar Libro" OnClick="btnModificar_Click" />
+                <asp:Button ID="btnEliminar" runat="server" Text="Eliminar Libro" OnClick="btnEliminar_Click" />
             </div>
         </div>
     </form>

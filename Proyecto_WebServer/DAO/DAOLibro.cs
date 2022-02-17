@@ -10,16 +10,70 @@ namespace Proyecto_WebServer.DAO
 {
     public class DAOLibro
     {
+        public List<Libro> lstLibros()
+        {
+            MySqlConnection conexion = new MySqlConnection();
+            conexion.ConnectionString = "server=127.0.0.1;uid=root;pwd=root;database=Libreria";
+
+            try
+            {
+                conexion.Open();
+                MySqlCommand consulta = new MySqlCommand(
+                    @"SELECT ID, ISBN, Titulo, NumeroEdicion, AnioPublicacion, Autores, Pais, Sinopsis, 
+                        Carrera, Materia
+                        FROM Libros;") ;
+                
+                consulta.Connection = conexion;
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(consulta);
+
+                DataTable resultado = new DataTable();
+                DataSet ds = new DataSet(); 
+                adaptador.Fill(ds, "libros");
+
+                List<Libro> libros = new List<Libro>();
+                foreach (DataRow dr in ds.Tables["Libros"].Rows)
+                {
+                    Libro obj = new Libro();
+                    obj.ID = Convert.ToInt32(dr[0]);
+                    obj.ISBN = dr[1].ToString();
+                    obj.Titulo = dr[2].ToString();
+                    obj.NumeroEdicion = Convert.ToInt32(dr[3]);
+                    obj.AnioPublicacion = Convert.ToInt32(dr[4]);
+                    obj.Autores = dr[5].ToString();
+                    obj.Pais = dr[6].ToString();
+                    obj.Sinopsis = dr[7].ToString();
+                    obj.Carrera = dr[8].ToString();
+                    obj.Materia = dr[9].ToString();
+
+                    libros.Add(obj);
+                }
+
+                return libros;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                conexion.Close();
+                conexion.Dispose();
+            }
+        }
+
+
         public bool Insertar(Libro obj)
         {
             MySqlConnection conexion = new MySqlConnection();
             conexion.ConnectionString = "server=127.0.0.1;uid=root;pwd=root;database=Libreria";
             conexion.Open();
 
-            string consulta = "insert into libros " +
-                "(ISBN, Titulo, NumeroEdicion, AnioPublicacion, Autores, Pais, Sinopsis, Carrera, Materia) values" +
-                "(@ISBN, @Titulo, @NumeroEdicion, @AnioPublicacion, @Autores, @Pais, @Sinopsis, @Carrera, @Materia)";
+            string consulta = @"INSERT INTO libros
+                (ISBN, Titulo, NumeroEdicion, AnioPublicacion, Autores, Pais, Sinopsis, Carrera, Materia) VALUES
+                (@ISBN, @Titulo, @NumeroEdicion, @AnioPublicacion, @Autores, @Pais, @Sinopsis, @Carrera, @Materia);";
+
             MySqlCommand comando = new MySqlCommand(consulta, conexion);
+
             comando.Parameters.AddWithValue("@ISBN", obj.ISBN);
             comando.Parameters.AddWithValue("@Titulo", obj.Titulo);
             comando.Parameters.AddWithValue("@NumeroEdicion", obj.NumeroEdicion);

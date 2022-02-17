@@ -7,6 +7,7 @@ namespace Proyecto_WebServer.MODELO
 {
     public class Libro
     {
+        public int ID { get; set; }
         public string ISBN { get; set; }
         public string Titulo { get; set; }
         public int NumeroEdicion { get; set; }
