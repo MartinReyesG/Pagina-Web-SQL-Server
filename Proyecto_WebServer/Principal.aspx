@@ -15,9 +15,11 @@
 <body>
     <form id="FPrincipal" runat="server">
         <div>
-            <div class="auto_style1">
-                0
-                LIBRERIA 
+            <div class="container d-flex justify-content-center">
+                <img src="https://cdn.freebiesupply.com/logos/thumbs/2x/mysql-2-logo.png" width="350" />
+            </div>
+            <div class="d-flex justify-content-center container">
+                <h1>LIBRERIA</h1> 
             </div>
             <br />
             <div>
