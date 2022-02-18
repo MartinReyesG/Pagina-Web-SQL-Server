@@ -5,36 +5,38 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Proyecto_WebServer.DAO;
+using Proyecto_WebServer.MODELO;
+using System.Data;
 
 namespace Proyecto_WebServer
 {
-    public partial class Principal : System.Web.UI.Page
+    public partial class EliminarLibro : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnVer_Click(object sender, EventArgs e)
         {
             DAOLibro obj = new DAOLibro();
             dgvLibros.DataSource = obj.lstLibros();
             dgvLibros.DataBind();
         }
 
-        protected void btnAnadir_Click(object sender, EventArgs e)
+        protected void btnRegresar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("AnadirLibro.aspx");
+            Response.Redirect("Principal.aspx");
         }
 
-        protected void btnModificar_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("ModificarLibro.aspx");
-        }
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("EliminarLibro.aspx");
+
+            DAOLibro obj = new DAOLibro();
+
+            bool a = obj.eliminar(int.Parse(txtID.Text.ToString()));
+
+            txtID.Text = "";
+
+            dgvLibros.DataSource = null;
+            dgvLibros.DataSource = obj.lstLibros();
+            dgvLibros.DataBind();
         }
     }
 }
