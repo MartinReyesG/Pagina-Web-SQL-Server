@@ -94,5 +94,25 @@ namespace Proyecto_WebServer.DAO
             conexion.Dispose();
             return true;
         }
+
+
+        public bool eliminar(int indice)
+        {
+            MySqlConnection conexion = new MySqlConnection();
+            conexion.ConnectionString = parametrosConexion;
+            conexion.Open();
+
+            string consulta = @"delete from libros
+                                    where id=@indice;";
+
+            MySqlCommand comando = new MySqlCommand(consulta, conexion);
+
+            comando.Parameters.AddWithValue("@indice", indice);
+
+            comando.ExecuteNonQuery();
+            conexion.Close();
+            conexion.Dispose();
+            return true;
+        }
     }
 }

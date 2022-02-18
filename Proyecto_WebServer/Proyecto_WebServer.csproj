@@ -107,6 +107,7 @@
   <ItemGroup>
     <Content Include="AnadirLibro.aspx" />
     <Content Include="CSS\StyleSheet1.css" />
+    <Content Include="EliminarLibro.aspx" />
     <Content Include="Principal.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -119,6 +120,13 @@
       <DependentUpon>AnadirLibro.aspx</DependentUpon>
     </Compile>
     <Compile Include="DAO\DAOLibro.cs" />
+    <Compile Include="EliminarLibro.aspx.cs">
+      <DependentUpon>EliminarLibro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EliminarLibro.aspx.designer.cs">
+      <DependentUpon>EliminarLibro.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MODELO\Libro.cs" />
     <Compile Include="Principal.aspx.cs">
       <DependentUpon>Principal.aspx</DependentUpon>
