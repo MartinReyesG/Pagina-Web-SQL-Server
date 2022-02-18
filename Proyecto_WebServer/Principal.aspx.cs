@@ -29,7 +29,7 @@ namespace Proyecto_WebServer
 
         protected void btnModificar_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("ModificarLibro.aspx");
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)

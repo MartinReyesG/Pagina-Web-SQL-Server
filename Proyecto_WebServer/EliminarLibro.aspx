@@ -18,7 +18,7 @@
         </div>
                 <asp:GridView ID="dgvLibros" runat="server"></asp:GridView>
             <hr />
-            Inserta el ID del libro a eliminar:<br />
+            Inserta el ID del libro que desea eliminar:<br />
                 <asp:TextBox ID="txtID" CssClass="form-control" runat="server" placeholder="Ingresar Título" Width="229px"></asp:TextBox>
             <br />
             <hr />

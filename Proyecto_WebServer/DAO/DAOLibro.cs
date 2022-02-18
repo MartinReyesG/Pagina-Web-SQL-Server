@@ -114,5 +114,37 @@ namespace Proyecto_WebServer.DAO
             conexion.Dispose();
             return true;
         }
+
+        public bool modificar(Libro obj)
+        {
+            MySqlConnection conexion = new MySqlConnection();
+            conexion.ConnectionString = parametrosConexion;
+            conexion.Open();
+
+            string consulta = @"update libros 
+                    set ISBN=@ISBN,Titulo=@Titulo,NumeroEdicion=@NumeroEdicion
+		            ,AnioPublicacion=@AnioPublicacion,Autores=@Autores,Pais=@Pais
+                    ,Sinopsis=@Sinopsis,Carrera=@Carrera
+                    ,Materia=@Materia
+		            where id=@id;";
+
+            MySqlCommand comando = new MySqlCommand(consulta, conexion);
+
+            comando.Parameters.AddWithValue("@id", obj.ID);
+            comando.Parameters.AddWithValue("@ISBN", obj.ISBN);
+            comando.Parameters.AddWithValue("@Titulo", obj.Titulo);
+            comando.Parameters.AddWithValue("@NumeroEdicion", obj.NumeroEdicion);
+            comando.Parameters.AddWithValue("@AnioPublicacion", obj.AnioPublicacion);
+            comando.Parameters.AddWithValue("@Autores", obj.Autores);
+            comando.Parameters.AddWithValue("@Pais", obj.Pais);
+            comando.Parameters.AddWithValue("@Sinopsis", obj.Sinopsis);
+            comando.Parameters.AddWithValue("@Carrera", obj.Carrera);
+            comando.Parameters.AddWithValue("@Materia", obj.Materia);
+
+            comando.ExecuteNonQuery();
+            conexion.Close();
+            conexion.Dispose();
+            return true;
+        }
     }
 }
