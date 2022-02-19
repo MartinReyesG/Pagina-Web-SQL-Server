@@ -15,17 +15,11 @@
 <body>
     <form id="FPrincipal" runat="server">
         <div>
-<<<<<<< HEAD
             <div class="container d-flex justify-content-center">
                 <img src="https://cdn.freebiesupply.com/logos/thumbs/2x/mysql-2-logo.png" width="350" />
             </div>
             <div class="d-flex justify-content-center container">
-                <h1>LIBRERIA</h1> 
-=======
-            <div class="auto_style1">
-                LIBRERIA 
->>>>>>> e19fb9747fcfb396dbfe0109b384c4448fa72dee
-            </div>
+                <h1>LIBRERIA</h1>
             <br />
             <div>
                 <asp:GridView ID="dgvLibros" runat="server"></asp:GridView>

@@ -11,8 +11,8 @@ namespace Proyecto_WebServer.DAO
     public class DAOLibro
     {
         string parametrosConexion =
-                 //"server=127.0.0.1;uid=root;pwd=martin12345;database=Libreria";
-                 "server=127.0.0.1;uid=root;pwd=root;database=Libreria";
+                 "server=127.0.0.1;uid=root;pwd=martin12345;database=Libreria";
+                 //"server=127.0.0.1;uid=root;pwd=root;database=Libreria";
         public List<Libro> lstLibros()
         {
            
