@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Proyecto_WebServer.MODELO;
-using MySql.Data.MySqlClient;
+//using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 using System.Data;
 
 namespace Proyecto_WebServer.DAO
@@ -11,25 +12,29 @@ namespace Proyecto_WebServer.DAO
     public class DAOLibro
     {
         string parametrosConexion =
-                 "server=127.0.0.1;uid=root;pwd=martin12345;database=Libreria";
-                 //"server=127.0.0.1;uid=root;pwd=root;database=Libreria";
+                  //"server=127.0.0.1;uid=root;pwd=martin12345;database=Libreria";
+                  //"server=127.0.0.1;uid=root;pwd=root;database=Libreria";   
+                  "SERVER=HP-PAVILION;DATABASE=Libreria;Integrated security=true";
         public List<Libro> lstLibros()
         {
-           
 
-            MySqlConnection conexion = new MySqlConnection();
+
+            //MySqlConnection conexion = new MySqlConnection();
+            SqlConnection conexion = new SqlConnection();
             conexion.ConnectionString = parametrosConexion;
 
             try
             {
                 conexion.Open();
-                MySqlCommand consulta = new MySqlCommand(
+                //MySqlCommand consulta = new MySqlCommand(
+                SqlCommand consulta = new SqlCommand(
                     @"SELECT ID, ISBN, Titulo, NumeroEdicion, AnioPublicacion, Autores, Pais, Sinopsis, 
                         Carrera, Materia
                         FROM Libros;") ;
                 
                 consulta.Connection = conexion;
-                MySqlDataAdapter adaptador = new MySqlDataAdapter(consulta);
+                //MySqlDataAdapter adaptador = new MySqlDataAdapter(consulta);
+                SqlDataAdapter adaptador = new SqlDataAdapter(consulta);
 
                 DataTable resultado = new DataTable();
                 DataSet ds = new DataSet(); 
@@ -69,7 +74,8 @@ namespace Proyecto_WebServer.DAO
 
         public bool Insertar(Libro obj)
         {
-            MySqlConnection conexion = new MySqlConnection();
+            //MySqlConnection conexion = new MySqlConnection();
+            SqlConnection conexion = new SqlConnection();
             conexion.ConnectionString = parametrosConexion;
             conexion.Open();
 
@@ -77,7 +83,8 @@ namespace Proyecto_WebServer.DAO
                 (ISBN, Titulo, NumeroEdicion, AnioPublicacion, Autores, Pais, Sinopsis, Carrera, Materia) VALUES
                 (@ISBN, @Titulo, @NumeroEdicion, @AnioPublicacion, @Autores, @Pais, @Sinopsis, @Carrera, @Materia);";
 
-            MySqlCommand comando = new MySqlCommand(consulta, conexion);
+            //MySqlCommand comando = new MySqlCommand(consulta, conexion);
+            SqlCommand comando = new SqlCommand(consulta, conexion);
 
             comando.Parameters.AddWithValue("@ISBN", obj.ISBN);
             comando.Parameters.AddWithValue("@Titulo", obj.Titulo);
@@ -98,14 +105,16 @@ namespace Proyecto_WebServer.DAO
 
         public bool eliminar(int indice)
         {
-            MySqlConnection conexion = new MySqlConnection();
+            // MySqlConnection conexion = new MySqlConnection();
+            SqlConnection conexion = new SqlConnection();
             conexion.ConnectionString = parametrosConexion;
             conexion.Open();
 
             string consulta = @"delete from libros
                                     where id=@indice;";
 
-            MySqlCommand comando = new MySqlCommand(consulta, conexion);
+            //MySqlCommand comando = new MySqlCommand(consulta, conexion);
+            SqlCommand comando = new SqlCommand(consulta, conexion);
 
             comando.Parameters.AddWithValue("@indice", indice);
 
@@ -117,7 +126,8 @@ namespace Proyecto_WebServer.DAO
 
         public bool modificar(Libro obj)
         {
-            MySqlConnection conexion = new MySqlConnection();
+            // MySqlConnection conexion = new MySqlConnection();
+            SqlConnection conexion = new SqlConnection();
             conexion.ConnectionString = parametrosConexion;
             conexion.Open();
 
@@ -128,7 +138,8 @@ namespace Proyecto_WebServer.DAO
                     ,Materia=@Materia
 		            where id=@id;";
 
-            MySqlCommand comando = new MySqlCommand(consulta, conexion);
+            // MySqlCommand comando = new MySqlCommand(consulta, conexion);
+            SqlCommand comando = new SqlCommand(consulta, conexion);
 
             comando.Parameters.AddWithValue("@id", obj.ID);
             comando.Parameters.AddWithValue("@ISBN", obj.ISBN);
