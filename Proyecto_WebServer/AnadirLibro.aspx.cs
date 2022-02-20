@@ -47,7 +47,7 @@ namespace Proyecto_WebServer
 
         protected void btnRegresar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Principal.aspx");
+            Response.Redirect("Index.aspx");
         }
     }
 }

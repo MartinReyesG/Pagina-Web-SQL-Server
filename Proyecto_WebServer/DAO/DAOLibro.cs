@@ -12,9 +12,20 @@ namespace Proyecto_WebServer.DAO
     public class DAOLibro
     {
         string parametrosConexion =
-                  //"server=127.0.0.1;uid=root;pwd=martin12345;database=Libreria";
-                  //"server=127.0.0.1;uid=root;pwd=root;database=Libreria";   
-                  "SERVER=HP-PAVILION;DATABASE=Libreria;Integrated security=true";
+                 //"server=127.0.0.1;uid=root;pwd=martin12345;database=Libreria";
+                 //"server=127.0.0.1;uid=root;pwd=root;database=Libreria";   
+                 // "SERVER=HP-PAVILION;DATABASE=Libreria;Integrated security=true";
+
+                 //"SERVER=HP-PAVILION;Initial Catalog=Libreria;Integrated security=true;" +
+                 //   "TrustServerCertificate=False;" +
+                 //   "Persist Security Info=False;MultipleActiveResultSets =False;Connection Timeout=30;";
+                 "server=localhost;database=Libreria;uid=sa;pwd=root";
+
+        //"Server=HP-PAVILION;" +
+        //"DATABASE=Libreria;Persist Security Info=False;" +
+        //"User ID=sa;Password=root;MultipleActiveResultSets =False;" +
+        //"Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+
         public List<Libro> lstLibros()
         {
 
